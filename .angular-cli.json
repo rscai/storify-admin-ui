@@ -21,7 +21,8 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -53,5 +54,10 @@
   "defaults": {
     "styleExt": "css",
     "component": {}
+  },
+  "environments": {
+    "dev": "environments/environment.ts",
+    "prod": "environments/environment.prod.ts",
+    "sit": "environments/environment.sit.ts"
   }
 }
