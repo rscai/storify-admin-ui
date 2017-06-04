@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  envName: "sit"
+  envName: "sit",
+  adminRestServiceEndpoint: "http://sit-env.8hwambiupb.us-east-1.elasticbeanstalk.com/api"
 };

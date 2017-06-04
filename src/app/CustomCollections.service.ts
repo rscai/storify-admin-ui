@@ -1,26 +1,15 @@
-export class CustomCollectionsService {
-  fetch(){
-    return [
-      {
-        id:"cc_1",
-        title:"Collection1"
-      },
-      {
-        id:"cc_2",
-        title:"Collection2"
-      },
-      {
-        id:"cc_3",
-        title:"Collection3"
-      },
-      {
-        id:"cc_4",
-        title:"Collection4"
-      },
-      {
-        id:"cc_5",
-        title:"Collection5"
-      },
-    ]
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { HalService } from './hal/service';
+
+import { CustomCollections } from './model/CustomCollections';
+
+import { environment } from '../environments/environment';
+
+
+@Injectable()
+export class CustomCollectionsService extends HalService<CustomCollections> {
+  constructor(http: Http){
+    super(http,environment.adminRestServiceEndpoint,"custom_collections");
   }
 }

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CustomCollectionsService } from '../CustomCollections.service'
+
+import { Observable } from 'rxjs/Observable';
+
+import { CustomCollections } from '../model/CustomCollections';
+import { HalCollection } from '../hal/hal';
+import { CustomCollectionsService } from '../CustomCollections.service';
+
+
 
 @Component({
   selector: 'app-custom-collection-list',
@@ -9,11 +16,25 @@ import { CustomCollectionsService } from '../CustomCollections.service'
   providers: [CustomCollectionsService]
 })
 export class CustomCollectionListComponent implements OnInit {
-  customCollectionsList: any[]
+  collection: HalCollection<CustomCollections>;
   constructor(private customCollectionsService: CustomCollectionsService) { }
 
   ngOnInit() {
-    this.customCollectionsList = this.customCollectionsService.fetch();
+    this.customCollectionsService.collection(1, 10)
+      .then(collection =>
+        this.collection = collection);
+  }
+
+  onNext(event: any){
+    console.log("call next");
+    this.customCollectionsService.collectionLink(this.collection._links.next)
+    .then(collection => this.collection = collection);
+  }
+
+  onPrevious(){
+    console.log("call previous");
+    this.customCollectionsService.collectionLink(this.collection._links.prev)
+    .then(collection => this.collection = collection);
   }
 
 }
