@@ -1,7 +1,7 @@
 import { HalJson } from "../hal/hal";
 
-export class CustomCollections extends HalJson{
-  id: number;
+export class CustomCollection extends HalJson{
+  id: string;
   title: string;
   bodyHtml: string;
 }
