@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   template:  `
-    <h2>Custom Collection</h2>
+    <div class="page-header">
+      <h2>Custom Collection</h2>
+    </div>
     <router-outlet></router-outlet>
   `
 })
