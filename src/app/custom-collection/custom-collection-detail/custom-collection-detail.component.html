@@ -10,7 +10,7 @@
     <div class="form-group row">
       <label for="bodyHtml" class="col-sm-1 col-form-label">Description</label>
       <div class="col-sm-5">
-        <textarea class="form-control" rows="3">{{customCollection.bodyHtml}}</textarea>
+        <textarea class="form-control" rows="3" [(ngModel)]="customCollection.bodyHtml" [ngModelOptions]="{standalone: true}">{{customCollection.bodyHtml}}</textarea>
       </div>
     </div>
     <div class="form-group row">
@@ -121,7 +121,7 @@
     </div>
     <div class="form-group row">
       <div class="offset-sm-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+        <button id="btn-submit" type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
       </div>
     </div>
     <div class="form-group row" *ngIf="showProgressIndicator">
@@ -135,12 +135,12 @@
     </div>
     <div class="form-group row" *ngIf="infoMessage">
       <div class="offset-sm-2 col-sm-10">
-        <div class="alert alert-info" role="alert">{{infoMessage}}</div>
+        <div id="msg-info" class="alert alert-info" role="alert">{{infoMessage}}</div>
       </div>
     </div>
     <div class="form-group row" *ngIf="errorMessage">
       <div class="offset-sm-2 col-sm-10">
-        <div class="alert alert-warning" role="alert">{{errorMessage}}</div>
+        <div id="msg-error" class="alert alert-warning" role="alert">{{errorMessage}}</div>
       </div>
     </div>
   </form>

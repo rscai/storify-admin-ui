@@ -5,7 +5,11 @@ export class StorifyAdminUiPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  navigateToCustomCollection() {
+    return element(by.id('menu-custom-collection')).click();
+  }
+
+  detailTitle() {
+    return element(by.css(".detail-title"));
   }
 }

@@ -7,8 +7,9 @@ describe('storify-admin-ui App', () => {
     page = new StorifyAdminUiPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display Custom Collection', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    page.navigateToCustomCollection();
+    expect(page.detailTitle().getText()).toEqual('Custom Collection');
   });
 });

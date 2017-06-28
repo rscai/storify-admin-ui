@@ -6,6 +6,10 @@ const appRoutes: Routes = [
   {
     path: 'custom-collection',
     loadChildren: 'app/custom-collection/custom-collection.module#CustomCollectionModule'
+  },
+  {
+    path: 'product',
+    loadChildren: 'app/product/product.module#ProductModule'
   }
 ];
 
