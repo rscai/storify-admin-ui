@@ -1,6 +1,6 @@
-import { NgModule }       from '@angular/core';
-import { FormsModule }    from '@angular/forms';
-import { CommonModule }   from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { ProductService } from './Product.service';
 import { ProductRoutingModule } from './product-routing.module';
@@ -9,18 +9,18 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
-  imports:[
+  imports: [
     CommonModule,
     FormsModule,
     ProductRoutingModule
   ],
-  declarations:[
+  declarations: [
     ProductComponent,
     ProductListComponent,
     ProductDetailComponent
   ],
-  providers:[
+  providers: [
     ProductService
   ]
 })
-export class ProductModule {}
+export class ProductModule { }

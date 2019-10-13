@@ -4,21 +4,14 @@ import { Router, Resolve, RouterStateSnapshot,
 
 import { Product } from './Product';
 import { ProductService } from './Product.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductDetailResolver implements Resolve<Product> {
   constructor(private service: ProductService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Product> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> {
     let id = route.params['id'];
-
-    return this.service.findOne(id).then(entity => {
-      if (entity) {
-        return entity;
-      } else { // id not found
-        this.router.navigate(['/product']);
-        return null;
-      }
-    });
+    return this.service.findOne(id);
   }
 }

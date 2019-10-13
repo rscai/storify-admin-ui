@@ -44,26 +44,26 @@ export class ProductDetailComponent implements OnInit {
     this.showProgress(.55);
     if (this.mode == 'CREATE') {
       this.service.create(this.entity)
-        .then(createdOne => {
+        .subscribe(createdOne => {
           this.entity=createdOne;
           this.hideProgress();
           this.info('Created Product successfully.');
           // convert mode
           this.mode = 'UPDATE';
-        })
-        .catch(error => {
+        },
+        error => {
           this.hideProgress();
           this.error('Created Product failed!');
         });
     } else if (this.mode == 'UPDATE') {
 
       this.service.update(this.entity)
-      .then(updatedOne => {
+      .subscribe(updatedOne => {
         this.entity=updatedOne;
         this.hideProgress();
         this.info('Updated Product successfully.');
-      })
-      .catch(error => {
+      },
+      error => {
         this.hideProgress();
         this.error('Updated Product failed!');
       });

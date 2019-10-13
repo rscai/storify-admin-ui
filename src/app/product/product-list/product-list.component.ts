@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Product } from '../Product';
-import { HalCollection, Embedded } from 'app/hal/hal';
+import { HalCollection, Embedded } from '../../hal/hal';
 import { ProductService } from '../Product.service';
 
 @Component({
-  selector: 'app-product-list',
+  selector: 'div[catalog-product-list].container-fluid',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
@@ -20,26 +20,28 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.entityService.collection(1, 10).then(
-      collection => this.collection = collection
+    this.entityService.collection(1, 10).subscribe(
+      (collection: HalCollection<Product>) => this.collection = collection,
+      error => console.log(error)
     );
   }
 
   onNext(event: any) {
-    console.log("call next");
+    console.log('call next');
     this.entityService.collectionLink(this.collection._links.next)
-      .then(
-      collection => this.collection = collection,
-    );
+      .subscribe(
+        (collection: HalCollection<Product>) => this.collection = collection,
+        error => console.log(error)
+      );
     event.preventDefault();
   }
 
   onPrevious() {
-    console.log("call previous");
+    console.log('call previous');
     this.entityService.collectionLink(this.collection._links.prev)
-      .then(
-      collection => this.collection = collection,
-      error => console.log(error)
+      .subscribe(
+        (collection: HalCollection<Product>) => this.collection = collection,
+        error => console.log(error)
       );
     event.preventDefault();
 
@@ -49,9 +51,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onRemove(entity: Product) {
-    this.entityService.delete(entity)
-      .then(customCollection => this.collection._embedded.products =
-        this.collection._embedded.products.filter(ele => ele.id !== customCollection.id) as [Product])
+
   }
   onCreate() {
     this.router.navigate(['create'], { relativeTo: this.route });

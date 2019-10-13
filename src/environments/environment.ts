@@ -6,5 +6,9 @@
 export const environment = {
   production: false,
   envName: "dev",
-  adminRestServiceEndpoint: "http://localhost:5000/api"
+  backend: {
+    catalog: {
+      url: "http://localhost:8081"
+    }
+  }
 };

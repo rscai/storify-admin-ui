@@ -4,12 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   {
-    path: 'custom-collection',
-    loadChildren: 'app/custom-collection/custom-collection.module#CustomCollectionModule'
+    path: 'catalog/product',
+    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
   },
   {
-    path: 'product',
-    loadChildren: 'app/product/product.module#ProductModule'
+    path: 'catalog/productImage',
+    loadChildren: () => import('./catalog/product-image/product-image.module').then(m => m.ProductImageModule)
   }
 ];
 

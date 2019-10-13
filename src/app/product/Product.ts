@@ -7,13 +7,6 @@ export class MetaField {
   namespace: string;
   description: string;
 }
-export class ProductImage extends HalJson {
-  id: number;
-  src: string;
-  position: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 export class ProductVariant extends HalJson {
   id: number;
@@ -44,7 +37,6 @@ export class Product extends HalJson {
   bodyHtml: string;
   handle: string;
   createdAt: Date;
-  images: [ProductImage];
   productType: string;
   published: boolean;
   publishedScope: string;
@@ -53,6 +45,5 @@ export class Product extends HalJson {
   metafieldsGlobalTitleTag: string;
   metafieldsGlobalDescriptionTag: string;
   updatedAt: Date;
-  variants: [ProductVariant];
   vendor: string;
 }
