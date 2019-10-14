@@ -20,7 +20,7 @@ export class ProductImageListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.entityService.collection(1, 10).subscribe(
+    this.entityService.collection(0, 10).subscribe(
       (collection: HalCollection<ProductImage>) => this.collection = collection,
       error => console.log(error)
     );
@@ -54,7 +54,11 @@ export class ProductImageListComponent implements OnInit {
   }
 
   onRemove(entity: ProductImage) {
-
+    this.entityService.delete(entity).subscribe(
+      _ => this.entityService.collection(this.collection.page.number, this.collection.page.size).subscribe(
+        (collection: HalCollection<ProductImage>) => this.collection = collection,
+        error => console.log(error)),
+      error => console.log(error)
+    );
   }
-
 }

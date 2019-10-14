@@ -13,18 +13,22 @@ export abstract class HalService<T extends HalJson> {
   }
 
   collection(page: number, size: number): Observable<HalCollection<T>> {
-    return this.http.get<HalCollection<T>>(this.restEndpoint + '/' + this.resourceName);
+    return this.http.get<HalCollection<T>>(this.restEndpoint + '/' + this.resourceName + '?page=' + page + '&size=' + size);
   }
   collectionLink(link: Link): Observable<HalCollection<T>> {
     return this.http.get<HalCollection<T>>(link.href);
   }
 
   findOne(id: string): Observable<T> {
-    return this.http.get<T>(this.restEndpoint + "/" + this.resourceName + "/" + id);
+    return this.http.get<T>(this.restEndpoint + '/' + this.resourceName + '/' + id);
+  }
+
+  findOneByLink(link: Link): Observable<T> {
+    return this.http.get<T>(link.href);
   }
 
   create(entity: T): Observable<T> {
-    return this.http.post<T>(this.restEndpoint + "/" + this.resourceName, entity, {headers:this.headers});
+    return this.http.post<T>(this.restEndpoint + '/' + this.resourceName, entity, { headers: this.headers });
   }
 
   update(entity: T): Observable<T> {

@@ -24,7 +24,7 @@ const productImageRoutes: Routes = [
                 path: ':id',
                 component: ProductImageDetailComponent,
                 resolve: {
-                    product: ProductImageDetailResolver
+                    productImage: ProductImageDetailResolver
                 }
             }
         ]
