@@ -24,7 +24,7 @@ export class ProductImageDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.route.snapshot.url[0].path == 'create') {
+        if (this.route.snapshot.url[0].path === 'create') {
             this.mode = 'CREATE';
             this.editTitle = 'New';
             this.entity = new ProductImage();
@@ -42,30 +42,30 @@ export class ProductImageDetailComponent implements OnInit {
     onSave() {
         console.log('on save');
         this.showProgress(.55);
-        if (this.mode == 'CREATE') {
+        if (this.mode === 'CREATE') {
             this.service.create(this.entity)
                 .subscribe(createdOne => {
                     this.entity = createdOne;
                     this.hideProgress();
-                    this.info('Created Product successfully.');
+                    this.info('Created ProductImage successfully.');
                     // convert mode
                     this.mode = 'UPDATE';
                 },
                     error => {
                         this.hideProgress();
-                        this.error('Created Product failed!');
+                        this.error('Created ProductImage failed!');
                     });
-        } else if (this.mode == 'UPDATE') {
+        } else if (this.mode === 'UPDATE') {
 
             this.service.update(this.entity)
                 .subscribe(updatedOne => {
                     this.entity = updatedOne;
                     this.hideProgress();
-                    this.info('Updated Product successfully.');
+                    this.info('Updated ProductImage successfully.');
                 },
                     error => {
                         this.hideProgress();
-                        this.error('Updated Product failed!');
+                        this.error('Updated ProductImage failed!');
                     });
         }
     }
