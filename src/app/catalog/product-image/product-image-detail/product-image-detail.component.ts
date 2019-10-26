@@ -12,7 +12,7 @@ import { ProductImageService } from '../product-image.service';
 })
 export class ProductImageDetailComponent implements OnInit {
     entity: ProductImage;
-    editTitle: string;
+    editTitle: string;x
     infoMessage: string;
     errorMessage: string;
     showProgressIndicator = false;

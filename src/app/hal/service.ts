@@ -35,6 +35,13 @@ export abstract class HalService<T extends HalJson> {
     return this.http.put<T>(entity._links.self.href, entity, { headers: this.headers });
   }
 
+  updateLink(link: Link, links: Link[]): Observable<{}> {
+    const content: string = links.map((e: Link) => e.href).join('\n');
+    return this.http.put<{}>(link.href, content, {
+      headers: new HttpHeaders({ 'Content-Type': 'text/uri-list' })
+    });
+  }
+
   delete(entity: T): Observable<{}> {
     return this.http.delete(entity._links.self.href);
   }

@@ -1,0 +1,93 @@
+<form *ngIf="entity">
+  <div class="form-group row">
+    <label for="title" class="col-sm-1 col-form-label">Title</label>
+    <div class="col">
+      <input type="text" class="form-control" id="title" [(ngModel)]="entity.title"
+        [ngModelOptions]="{standalone: true}" placeholder="{{entity.title}}" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="tags" class="col-sm-1 col-form-label">Tags</label>
+    <div class="col">
+      <input type="text" class="form-control" id="tags" [(ngModel)]="tagString" [ngModelOptions]="{standalone: true}"
+        placeholder="{{tagString}}" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="images" class="col-sm-1 col-form-label">Images</label>
+    <div class="col" *ngIf="images">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1" *ngFor="let image of images">
+                <div class="card clickable" (click)="onRemoveImage(image)">
+                    <img class="card-img-bottom" src="{{image.src}}" class="img-thumbnail" style="width:80px" />
+                    <div class="card-body">
+                      <span class="badge badge-success">-</span>
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="availableImages" class="col-sm-1 col-form-label">Available Images</label>
+    <div class="col" *ngIf="imageCollection">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-1" *ngFor="let image of imageCollection._embedded.productImages">
+            <div class="card clickable" (click)="onAddImage(image)">
+              <img class="card-img-bottom" src="{{image.src}}" class="img-thumbnail" style="width:80px" />
+              <div class="card-body">
+                <span class="badge badge-success">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <nav aria-label="..." *ngIf="imageCollection">
+            <ul class="pagination">
+              <li class="page-item disabled" *ngIf="null == imageCollection._links.prev">
+                <span class="page-link">Previous</span>
+              </li>
+              <li class="page-item" *ngIf="imageCollection._links.prev"><a class="page-link" href="#"
+                  (click)="onImageCollectionPrev($event)">Previous</a></li>
+              <li class="page-item disabled" *ngIf="null == imageCollection._links.next">
+                <span class="page-link">Next</span>
+              </li>
+
+              <li class="page-item" *ngIf="imageCollection._links.next !=null"><a class="page-link" href="#"
+                  (click)="onImageCollectionNext($event)">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button id="btn-submit" type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="showProgressIndicator">
+    <div class="col-sm-10">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+          style="width: 60%;">
+          <span class="sr-only">60% Complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="infoMessage">
+    <div class="col-sm-10">
+      <div id="msg-info" class="alert alert-info" role="alert">{{infoMessage}}</div>
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="errorMessage">
+    <div class="col-sm-10">
+      <div id="msg-error" class="alert alert-warning" role="alert">{{errorMessage}}</div>
+    </div>
+  </div>
+</form>

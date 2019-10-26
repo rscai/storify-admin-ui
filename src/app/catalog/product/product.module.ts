@@ -8,6 +8,7 @@ import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
+import { ProductImageService } from '../product-image/product-image.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductDetailComponent
   ],
   providers: [
-    ProductService
+    ProductService,
+    ProductImageService
   ]
 })
 export class ProductModule { }

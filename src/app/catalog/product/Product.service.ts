@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HalService } from '../hal/service';
+import { HalService } from '../../hal/service';
 
 import { Product } from './Product';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable()

@@ -1,4 +1,5 @@
-import { HalJson } from '../hal/hal';
+import { HalJson, Link } from '../../hal/hal';
+import { ProductImage } from '../product-image/product-image';
 
 export class MetaField {
   key: string;
@@ -32,18 +33,11 @@ export class ProductVariant extends HalJson {
 }
 
 export class Product extends HalJson {
-  id: number;
+  id: string;
   title: string;
-  bodyHtml: string;
-  handle: string;
+  tags: string[];
+  images: string[];
   createdAt: Date;
-  productType: string;
-  published: boolean;
-  publishedScope: string;
-  tags: string;
-  templateSuffix: string;
-  metafieldsGlobalTitleTag: string;
-  metafieldsGlobalDescriptionTag: string;
   updatedAt: Date;
-  vendor: string;
+  imageCollection: ProductImage[];
 }
