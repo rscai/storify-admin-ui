@@ -1,18 +1,28 @@
 import { TestBed, async } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { CustomCollectionListComponent } from './custom-collection-list/custom-collection-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        MenuComponent,
-        CustomCollectionListComponent
+        AppComponent
       ],
+      imports : [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AppRoutingModule
+      ]
     }).compileComponents();
   }));
 
@@ -27,5 +37,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('app works!');
   }));
-  
 });
