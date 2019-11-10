@@ -10,6 +10,10 @@ const appRoutes: Routes = [
   {
     path: 'catalog/productImage',
     loadChildren: () => import('./catalog/product-image/product-image.module').then(m => m.ProductImageModule)
+  },
+  {
+    path: 'inventory/inventoryItem',
+    loadChildren: () => import('./inventory/inventory-item/inventory-item.module').then(m => m.InventoryItemModule)
   }
 ];
 

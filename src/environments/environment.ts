@@ -5,10 +5,13 @@
 
 export const environment = {
   production: false,
-  envName: "dev",
+  envName: 'dev',
   backend: {
     catalog: {
-      url: "http://localhost:8081"
+      url: 'http://localhost:9101/catalog'
+    },
+    inventory: {
+      url: 'http://localhost:9101/inventory'
     }
   }
 };
